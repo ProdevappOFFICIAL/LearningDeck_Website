@@ -242,9 +242,7 @@ ListItem.displayName = "ListItem"
             <ul className=" w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
             
               {components.map((component) => (
-                
-                <div >
-              
+           
                 <ListItem
                   key={component.title}
                   href={component.href}
@@ -253,7 +251,7 @@ ListItem.displayName = "ListItem"
                    <Newspaper width={15} height={15}/>
                 
                 </ListItem>
-              </div>
+          
              
               ))}
             </ul>
