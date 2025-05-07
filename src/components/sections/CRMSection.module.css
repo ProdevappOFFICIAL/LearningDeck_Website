@@ -1,0 +1,27 @@
+.crmSection {
+    padding: 2rem;
+  }
+  
+  .contentContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+  }
+  
+  .gifContainer {
+    flex: 1;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .textContainer {
+    flex: 1;
+    background: linear-gradient(to right, #f9f9f9, #fff);
+    padding: 1rem 2rem;
+    border-left: 4px solid #ccc;
+    border-radius: 8px;
+  }
+  

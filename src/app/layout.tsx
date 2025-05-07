@@ -6,6 +6,7 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'LearningDeck',
   description: 'CRM platform for conversion',
+  icons: './lds_logo.png'
 }
 
 const inter = Inter({subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "700"]})

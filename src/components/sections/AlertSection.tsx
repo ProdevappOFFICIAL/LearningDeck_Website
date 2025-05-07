@@ -10,7 +10,7 @@ function AlertSection() {
   return showAlert ? (
     <div
       className={cn(
-        "bg-green-600 mx-4  flex justify-between p-[12px] rounded-[12px]",
+        "bg-blue-600 mx-4  flex justify-between p-[12px] rounded-[12px]",
         showAlert ? "mt-4" : ""
       )}
     >

@@ -6,12 +6,12 @@ function MoreFeaturesSection() {
   const features = [
     {
       iconUrl: "/images/f_1.png",
-      title: "Offline Examination",
-      description: "Streamline your workflow with customizable shortcuts.",
+      title: "Hybrid Support",
+      description: "Support for both Online&Offline Support.",
     },
     {
       iconUrl: "/images/f_2.png",
-      title: "Sync ith Database",
+      title: "Sync with Database",
       description:
         "Update your contacts with the latest information on autopilot.",
     },
@@ -32,8 +32,8 @@ function MoreFeaturesSection() {
     },
     {
       iconUrl: "/images/f_6.png",
-      title: "",
-      description: "Update your contacts with the latest information on.",
+      title: "Local Gating Server",
+      description: "Offline intercommunication between client and admin desktop application",
     },
   ];
   return (

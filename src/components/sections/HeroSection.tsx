@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { gilroyBold } from "@/lib/utils";
 import { HeroYoutubeModal } from "../modals/HeroYoutubeModal";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 function HeroSection() {
   return (
@@ -17,16 +18,19 @@ function HeroSection() {
             "text-4xl md:text-[92px] text-center text-primary md:leading-[5.5rem] my-8"
           )}
         >
-        <div className=" text-green-600">Ultimate </div>  gateway to success
+        <div className=" text-blue-600">Hybrid Advanced </div> CBT Exam Manager
         </div>
 
         <p className="mb-8 text-[22px] text-center text-[#31373D]">
-          Transforming education with  innovative tools for learning, collaboration, and seamless exam management
+          Secure. scalable exams Online/Offline for Schools across Web, Desktop and Mobile
         </p>
 
         <div className="flex gap-[12px] justify-center">
-        <Button className="rounded-full bg-green-600" > Start for free</Button>
-        <Button className="rounded-full" variant={'outline'} > Get Started </Button>
+        <Button className="rounded-full bg-blue-600 hover:bg-blue-400" > Try Free Pilot</Button>
+        <Button className="rounded-full" variant={'outline'} > 
+          <Link href={'/demo'}>  See Demo 
+          </Link>
+       </Button>
         </div>
 
         <div className="flex w-full justify-center">

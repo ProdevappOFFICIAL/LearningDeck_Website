@@ -5,12 +5,12 @@ import MainButton from "../common/MainButton";
 
 function ReadyToBuildSection() {
   return (
-    <section className="flex flex-col md:flex-row justify-between gap-16 py-10 items-center !bg-green-600  px-4 md:px-[94px]">
+    <section className="flex flex-col md:flex-row justify-between gap-16 py-10 items-center !bg-blue-600  px-4 md:px-[94px]">
       <div>
         <p
           className={cn(
             gilroyBold.className,
-            "text-[40px] leading-tight md:leading-normal text-green-200"
+            "text-[40px] leading-tight md:leading-normal text-blue-200"
           )}
         >
           Get started

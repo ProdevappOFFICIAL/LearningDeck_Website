@@ -16,13 +16,13 @@ function SecurityScaleSection() {
           Secured Offline Exam <span className="text-gray-500">security</span>
         </p>
         <p className="text-[20px] text-primary mt-1.5 mb-6">
-          LearningDeck is trusted by thousands of schools
+          LearningDeck is trusted by schools
 
         </p>
 
         <div className="flex gap-[12px] justify-start">
           <MainButton
-            text="Start for free"
+            text="Try Free Pilot Now"
             size="small"
             className="border-none rounded-[12px]"
           />

@@ -8,12 +8,12 @@ export function HeroYoutubeModal() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className="hidden  s my-5 rounded-md border-gray-300/20 border-2 ">
+        <div className="my-5 rounded-md  ">
        
           <img
-          src="/dark.png"
+          src="/lds_banner.gif"
           alt="hero image"
-          className="hover:cursor-pointer  rounded-md border-gray-400/20 border-[10px] bg-blend-overlay  "
+          className="hover:cursor-pointer  rounded-md border bg-blend-overlay  "
         />
         </div>
       

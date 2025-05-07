@@ -60,13 +60,13 @@ const MainButton = forwardRef<HTMLButtonElement, MainButtonProps>(
         : "h-[2.625rem]";
 
     const variant_hover =
-      variant === "primary" ? "hover:bg-green-600" : "hover:bg-secondary";
+      variant === "primary" ? "hover:bg-blue-600" : "hover:bg-secondary";
 
     return !isLoading ? (
       <Button
         form={form}
-        className={`border-[.2rem] border-green-600 ${
-          isSecondaryVariant ? " text-white  bg-secondary" : "bg-green-600"
+        className={`border-[.2rem] border-blue-600 ${
+          isSecondaryVariant ? " text-white  bg-secondary" : "bg-blue-600"
         } text-white  ${propWidth} md:${propWidth}  select-none rounded-full hover:opacity-90 ${variant_hover} ${size_height} ${className}`}
         onClick={!disabled ? action : () => undefined}
         type={isSubmitable ? "submit" : "button"}
@@ -95,7 +95,7 @@ const MainButton = forwardRef<HTMLButtonElement, MainButtonProps>(
       </Button>
     ) : (
       <Button
-        className={`bg-green-600 text-white ${propWidth} md:${propWidth} select-none rounded-[0.625rem] cursor-not-allowed ${size_height} ${
+        className={`bg-blue-600 text-white ${propWidth} md:${propWidth} select-none rounded-[0.625rem] cursor-not-allowed ${size_height} ${
           className ? className : ""
         }`}
         ref={ref}
