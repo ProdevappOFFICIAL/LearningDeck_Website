@@ -123,7 +123,7 @@ ListItem.displayName = "ListItem"
   };
 
   // Function to scroll to bottom of page
-  const scrollToBottom = (e) => {
+  const scrollToBottom = (e: any) => {
     e.preventDefault();
     // Scroll to the bottom of the page
     window.scrollTo({

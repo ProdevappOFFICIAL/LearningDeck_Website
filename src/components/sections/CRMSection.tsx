@@ -21,7 +21,7 @@ function CRMSection() {
         </div>
         <div className="flex flex-col space-y-4 rounded-md border p-3 ">
           <h2>Start a server easily in on tap</h2>
-          <p>This start server on the selected host device like "MY COMPUTER" or maybe "WIFI NETWORK"</p>
+          <p>This start server on the selected host device like <strong>MY COMPUTER</strong> or maybe <strong>WIFI NETWORK</strong></p>
         </div>
       </div>
       <div className="flex items-center justify-between">
