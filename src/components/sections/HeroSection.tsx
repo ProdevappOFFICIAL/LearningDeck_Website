@@ -26,11 +26,12 @@ function HeroSection() {
         </p>
 
         <div className="flex gap-[12px] justify-center">
-        <Button className="rounded-full bg-blue-600 hover:bg-blue-400" > Try Free Pilot</Button>
-        <Button className="rounded-full" variant={'outline'} > 
-          <Link href={'/demo'}>  See Demo 
-          </Link>
-       </Button>
+        <a href={'https://github.com/ProdevappOFFICIAL/LearningDeck-Advanced-CBT-Exam-Manager/releases/new'}> 
+        <Button className="rounded-full bg-blue-600 hover:bg-blue-400" > Try Beta</Button></a>
+        <a href={'https://www.youtube.com/@Learningdeckorg'}>  <Button className="rounded-full" variant={'outline'} > 
+          See Demo 
+         
+       </Button> </a>
         </div>
 
         <div className="flex w-full justify-center">

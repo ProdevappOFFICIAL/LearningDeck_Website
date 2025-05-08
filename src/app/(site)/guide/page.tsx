@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function LearningDeckGuide() {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800">
+    <div className="min-h-screen bg-gray-50 text-gray-800 mt-20">
       {/* Header */}
     
 

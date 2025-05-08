@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { X } from "lucide-react";
+import { X, ChevronDown, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import * as React from "react"
@@ -118,8 +118,18 @@ ListItem.displayName = "ListItem"
     },
   ];
   const [menu, setMenu] = useState(false);
+  const [showSoftwareSubmenu, setShowSoftwareSubmenu] = useState(false);
+  
   const toggleMenu = () => {
     setMenu(!menu);
+    if (!menu) {
+      setShowSoftwareSubmenu(false);
+    }
+  };
+
+  const toggleSoftwareSubmenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowSoftwareSubmenu(!showSoftwareSubmenu);
   };
 
   // Function to scroll to bottom of page
@@ -251,81 +261,101 @@ ListItem.displayName = "ListItem"
       </div>
       {/* MOBILE */}
       <div
-        className={` block lg:hidden shadow-sm fixed top-0 w-full z-[999] bg-white py-4 animate-in fade-in zoom-in ${
-          menu ? " bg-blue-600 py-2" : ""
+        className={`block lg:hidden shadow-sm fixed top-0 w-full z-[999] bg-white py-4 animate-in fade-in zoom-in ${
+          menu ? "bg-gray-50 py-2" : ""
         } `}
       >
         <div className="flex justify-between mx-[10px]">
           <div className="flex justify-between mx-4 items-center">
             <div className="flex items-center space-x-2 px-2 py-1 rounded-full">
-              <Image src={'/lds.jpg'} width={170}
-                      height={180} alt="" className="rounded-full bg-blend-multiply scale-95 bg-white px-2 py-[1px] border border-gray-700/20"
+              <Image src={'/lds.jpg'} width={120}
+                      height={120} alt="Logo" className="rounded-full bg-blend-multiply scale-95 bg-white px-2 py-[1px] border border-gray-700/20"
                       />
-              
             </div>
           </div>
-          <div className="flex items-center gap-[40px]">
+          <div className="flex items-center gap-[20px]">
             {menu ? (
               <X
-                className="cursor-pointer animate-in fade-in zoom-in text-black"
+                className="cursor-pointer animate-in fade-in zoom-in text-black mr-4"
                 onClick={toggleMenu}
               />
             ) : (
-              <img
-                src="/images/menu.svg"
-                alt="logo"
-                className="cursor-pointer animate-in fade-in zoom-in"
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="cursor-pointer animate-in fade-in zoom-in mr-4"
                 onClick={toggleMenu}
-              />
+              >
+                <line x1="4" x2="20" y1="12" y2="12" />
+                <line x1="4" x2="20" y1="6" y2="6" />
+                <line x1="4" x2="20" y1="18" y2="18" />
+              </svg>
             )}
           </div>
         </div>
-        {menu ? (
-          <div className="my-8 select-none animate-in slide-in-from-right">
-            <div className="flex flex-col gap-8 mt-8 mx-4">
-              {/* Home link */}
-              <div className="flex gap-2">
-                <Link href="/">
-                  <p className="hover:text-primary cursor-pointer flex items-center gap-2 font-[500] text-gray">
-                    Home
-                  </p>
-                </Link>
-              </div>
-
-              {/* Features link (with scroll to bottom) */}
-              <div className="flex gap-2">
-                <a href="#" onClick={scrollToBottom}>
-                  <p className="hover:text-primary cursor-pointer flex items-center gap-2 font-[500] text-gray">
-                    Features
-                  </p>
-                </a>
-              </div>
-
-              {/* Other menu links */}
-              {links.map((item, index) => (
-                <div key={index} className="flex gap-2">
-                  <Link href={item.route}>
-                    <p className="hover:text-primary cursor-pointer flex items-center gap-2 font-[500] text-gray">
-                      {item.name}
-                    </p>
-                  </Link>
-                  {item.badgeCount ? (
-                    <div className="h-8 w-8 rounded-full bg-blue-600 flex justify-center items-center font-semibold text-white">
-                      {item.badgeCount}
-                    </div>
-                  ) : (
-                    <div />
-                  )}
+        {menu && (
+          <div className="my-4 select-none animate-in slide-in-from-top">
+            <div className="flex flex-col gap-4 mx-6">
+              {/* Main navigation items matching desktop */}
+              <Link href="/" onClick={() => setMenu(false)}>
+                <div className="py-3 border-b border-gray-100 hover:bg-gray-100 px-2 rounded-md">
+                  <p className="font-medium text-gray-800">Home</p>
                 </div>
-              ))}
+              </Link>
 
-              <div className="flex flex-col gap-[20px] select-none">
-                <Button className="">Start for free</Button>
+              <a href="#" onClick={scrollToBottom}>
+                <div className="py-3 border-b border-gray-100 hover:bg-gray-100 px-2 rounded-md">
+                  <p className="font-medium text-gray-800">Features</p>
+                </div>
+              </a>
+
+              {/* Software dropdown */}
+              <div>
+                <a href="#" onClick={toggleSoftwareSubmenu}>
+                  <div className="py-3 border-b border-gray-100 hover:bg-gray-100 px-2 rounded-md flex justify-between items-center">
+                    <p className="font-medium text-gray-800">Software</p>
+                    {showSoftwareSubmenu ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
+                  </div>
+                </a>
+                
+                {showSoftwareSubmenu && (
+                  <div className="ml-4 mt-2 bg-gray-50 rounded-md p-2">
+                    <div className="flex items-center justify-between w-full hover:bg-gray-200 px-3 py-2 rounded-md">
+                      <div className="flex items-center gap-2">
+                        <div className="w-6 h-6 relative">
+                          <Image fill={true} alt="" src={'/lds_logo.png'} className="object-contain" />
+                        </div>
+                        <div className="text-sm">
+                          LearningDeck Advanced CBT Manager           
+                        </div>
+                      </div>
+                      <div className="flex items-end text-white bg-blue-600 border px-2 py-1 rounded-full text-xs">
+                        download
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <Link href="/guide" onClick={() => setMenu(false)}>
+                <div className="py-3 border-b border-gray-100 hover:bg-gray-100 px-2 rounded-md">
+                  <p className="font-medium text-gray-800">Guide</p>
+                </div>
+              </Link>
+
+              {/* Authentication buttons */}
+              <div className="flex flex-col gap-3 mt-4">
+                <Button variant="outline" className="rounded-full w-full">Sign in</Button>
+                <Button className="rounded-full bg-blue-600 hover:bg-blue-500 w-full">Start for free</Button>
               </div>
             </div>
           </div>
-        ) : (
-          <div></div>
         )}
       </div>
     </div>
