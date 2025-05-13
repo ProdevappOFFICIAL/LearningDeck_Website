@@ -225,9 +225,11 @@ ListItem.displayName = "ListItem"
                       </div>
           
                     
+                      <a href={'https://github.com/ProdevappOFFICIAL/LearningDeck-Advanced-CBT-Exam-Manager/releases/download/v1.0.1/learningdeck-1.0.0-setup.exe'}> 
                       <div className="flex items-end text-white bg-blue-600 border px-2 py-1 rounded-full text-[10px]">
                         download
                       </div>
+                      </a>
                     </div>
                 
                   </ul>
@@ -335,9 +337,11 @@ ListItem.displayName = "ListItem"
                           LearningDeck Advanced CBT Manager           
                         </div>
                       </div>
+                        <a href={'https://github.com/ProdevappOFFICIAL/LearningDeck-Advanced-CBT-Exam-Manager/releases/download/v1.0.1/learningdeck-1.0.0-setup.exe'}> 
                       <div className="flex items-end text-white bg-blue-600 border px-2 py-1 rounded-full text-xs">
                         download
                       </div>
+                      </a>
                     </div>
                   </div>
                 )}

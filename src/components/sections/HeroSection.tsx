@@ -26,9 +26,9 @@ function HeroSection() {
         </p>
 
         <div className="flex gap-[12px] justify-center">
-        <a href={'https://github.com/ProdevappOFFICIAL/LearningDeck-Advanced-CBT-Exam-Manager/releases/new'}> 
+        <a href={'https://github.com/ProdevappOFFICIAL/LearningDeck-Advanced-CBT-Exam-Manager/releases/tag/v1.0.1'}> 
         <Button className="rounded-full bg-blue-600 hover:bg-blue-400" > Try Beta</Button></a>
-        <a href={'https://www.youtube.com/@Learningdeckorg'}>  <Button className="rounded-full" variant={'outline'} > 
+        <a href={'https://youtu.be/B-6kdSgTY8g?si=3VngJonc0RF67t0d'}>  <Button className="rounded-full" variant={'outline'} > 
           See Demo 
          
        </Button> </a>
