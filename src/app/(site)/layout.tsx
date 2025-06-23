@@ -1,5 +1,3 @@
-import NavBar from "@/components/common/NavBar";
-import AlertSection from "@/components/sections/AlertSection";
 import PricingPage from "./pricing/page";
 import EuphoriaFooter from "./footer/page";
 import TestimonialsSection from "./testimonials/page";

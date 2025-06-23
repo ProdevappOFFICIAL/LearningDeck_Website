@@ -51,7 +51,7 @@ export default function LearningDeckGuide() {
                   <p>If you have already opened the software without connecting, you can establish a connection afterward and click the reload button until your device appears in the dropdown menu.</p>
                 </div>
                 
-              <img src={'/startserverd.png'} className='rounded-lg' />
+              <img src={'/startserverd.png'} alt='start server' className='rounded-lg' />
               </div>
             </div>
 
@@ -71,7 +71,7 @@ export default function LearningDeckGuide() {
                   <p>Only users connected to your host device will be able to access the examination.</p>
                 </div>
                 
-                <img src={'/startserverg.png'} className='rounded-lg' />
+                <img src={'/startserverg.png'} alt='server' className='rounded-lg' />
               </div>
             </div>
 
@@ -108,7 +108,7 @@ export default function LearningDeckGuide() {
                   </div>
                 </div>
                 
-                <img src={'/homeadmin.png'} className='rounded-lg border' />
+                <img src={'/homeadmin.png'}  alt='server' className='rounded-lg border' />
               </div>
             </div>
 
@@ -136,7 +136,7 @@ export default function LearningDeckGuide() {
                   <p>Once the template is loaded, it can be accessed on any device connected to the Host device.</p>
                 </div>
                 
-                <img src={'/templates.png'} className='rounded-lg border' />
+                <img src={'/templates.png'}   alt='server' className='rounded-lg border' />
               </div>
             </div>
           </div>

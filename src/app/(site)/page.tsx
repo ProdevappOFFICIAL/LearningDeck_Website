@@ -2,8 +2,9 @@
 import React from "react";
 import { Play, ArrowRight, TrendingUp, Users } from "lucide-react";
 import Image from "next/image";
-import { HeroYoutubeModal } from "@/components/modals/HeroYoutubeModal";
-import HeroHeaderSection from "@/components/sections/HeroHeaderSection";
+import { HeroYoutubeModal } from "@/components/HeroyoutubeModal";
+import HeroHeaderSection from "@/components/sections/HerHeader";
+
 
 const EuphoriaLanding = () => {
   return (

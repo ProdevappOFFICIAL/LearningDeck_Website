@@ -1,8 +1,5 @@
 "use client";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import YoutubeIframe from "../common/YoutubeIFrame";
-import AnimatedBorderTrail from "../common/AnimatedBorderTrail";
-import Image from "next/image";
+
 import { useState } from "react";
 
 export function HeroYoutubeModal() {

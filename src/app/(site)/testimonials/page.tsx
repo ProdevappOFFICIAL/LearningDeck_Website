@@ -87,7 +87,7 @@ const TestimonialsSection = () => {
   // Double the testimonials for seamless infinite scroll
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
-  const renderStars = (rating) => {
+  const renderStars = (rating: any) => {
     return Array.from({ length: 5 }, (_, index) => (
       <Star
         key={index}
@@ -101,7 +101,12 @@ const TestimonialsSection = () => {
     ));
   };
 
-  const TestimonialCard = ({ testimonial, index, row = 1 }) => (
+  interface TestProps {
+    testimonial: any
+    index: any
+    row: Number
+  }
+  const TestimonialCard = ({ testimonial, index, row = 1 }: TestProps) => (
     <div
       className={`
         bg-white/80 backdrop-blur-sm rounded-2xl p-6 
@@ -142,9 +147,10 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Review */}
-        <p className="text-gray-700 text-sm leading-relaxed mb-4 transition-colors duration-300 group-hover:text-gray-800">
-          "{testimonial.review}"
-        </p>
+       <p className="text-gray-700 text-sm leading-relaxed mb-4 transition-colors duration-300 group-hover:text-gray-800">
+  &lsquo;{testimonial.review}&rsquo;
+</p>
+
 
         {/* Rating */}
         <div className="flex space-x-1">
