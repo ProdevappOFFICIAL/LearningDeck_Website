@@ -4,7 +4,7 @@ import './globals.css'
 
 
 export const metadata: Metadata = {
-  title: 'LearningDeck',
+  title: 'LearningDeck | Exam & Education Cooperation',
   description: 'Hybrid Advanced CBT Exam Manager',
   icons: './lds_logo.png'
 }

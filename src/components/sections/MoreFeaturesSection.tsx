@@ -6,14 +6,14 @@ function MoreFeaturesSection() {
   const features = [
     {
       iconUrl: "/images/f_1.png",
-      title: "Hybrid Support",
-      description: "Support for both Online&Offline Support.",
+      title: "Offline-First",
+      description: "Works fully without internet using Wi-Fi, LAN, or hotspot",
     },
     {
       iconUrl: "/images/f_2.png",
-      title: "Sync with Database",
+      title: "Zero Tech Skills Required",
       description:
-        "Update your contacts with the latest information on autopilot.",
+        "Install, create, and run exams from a simple desktop app",
     },
     {
       iconUrl: "/images/f_3.png",
@@ -22,8 +22,8 @@ function MoreFeaturesSection() {
     },
     {
       iconUrl: "/images/f_4.png",
-      title: "Cloud Backups",
-      description: "Backup Offline exams in Oneclick",
+      title: "Customizable & Secure",
+      description: "Custom Exam Interfaces for doing exams",
     },
     {
       iconUrl: "/images/f_5.png",

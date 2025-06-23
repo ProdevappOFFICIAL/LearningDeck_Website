@@ -149,7 +149,7 @@ ListItem.displayName = "ListItem"
   return (
     <div className="md:sticky md:top-0 md:shadow-none z-20 mt-[5rem] md:mt-0">
       {/* DESKTOP */}
-      <div className="hidden lg:block animate-in fade-in zoom-in bg-gray-50 p-4 border-b backdrop-blur-sm">
+      <div className="hidden lg:block animate-in fade-in zoom-in bg-white p-4 border-b backdrop-blur-sm">
         <div className="flex justify-between mx-4 items-center">
           <div className="flex items-center space-x-2 px-2 py-1 rounded-full">
             <Image src={'/lds.jpg'} width={170}
@@ -235,19 +235,32 @@ ListItem.displayName = "ListItem"
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-              <NavigationMenuItem className="hidden">
-                <Link href="/" legacyBehavior passHref>
+              <NavigationMenuItem className="flex">
+                <Link href="/guide" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle() + ` `}>
-                    Pricing
+                   How it works
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+                <NavigationMenuItem className="flex">
+                <Link href="/guide" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle() + ` `}>
+                   About Us
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+            <NavigationMenuItem className="flex">
+                <Link href="/guide" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle() + ` `}>
+                  FAQ
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
           
-          
               <NavigationMenuItem>
-                <Link href="/guide" legacyBehavior passHref>
+                <Link href="/pricing" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle() + ` `}>
-                    Guide
+                    Pricing
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -257,7 +270,7 @@ ListItem.displayName = "ListItem"
 
           <div className="flex items-center gap-[20px] select-none">
             <Button variant={'outline'} className="rounded-full">Sign in</Button>
-            <Button className="rounded-full bg-blue-600 hover:bg-blue-500">Start for free</Button>
+            <Button className="rounded-full bg-blue-600 hover:bg-blue-500 text-white">Start for free</Button>
           </div>
         </div>
       </div>

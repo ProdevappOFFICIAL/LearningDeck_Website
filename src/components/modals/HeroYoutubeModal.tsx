@@ -1,28 +1,42 @@
+"use client";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import YoutubeIframe from "../common/YoutubeIFrame";
 import AnimatedBorderTrail from "../common/AnimatedBorderTrail";
 import Image from "next/image";
-
+import { useState } from "react";
 
 export function HeroYoutubeModal() {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlayClick = () => {
+    setIsPlaying(true);
+  };
+
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <div className="my-5 rounded-md  ">
-       
-          <img
-          src="/lds_banner.gif"
-          alt="hero image"
-          className="hover:cursor-pointer  rounded-md border bg-blend-overlay  "
-        />
+    <div className="my-5 rounded-md relative group">
+      <img
+        src={isPlaying ? "/lds_dashboard.PNG" : "/lds_dashboard.PNG"}
+        alt="hero image"
+        className="hover:cursor-pointer rounded-md border-2  border-gray-300 shadow-sm bg-blend-overlay w-full"
+      />
+
+      {/* Play Button Overlay */}
+      {!isPlaying && (
+        <div className="absolute inset-0 flex items-center justify-center  bg-opacity-10    group-hover:bg-opacity-30 transition-all duration-300 rounded-md">
+          <div
+            className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center transform scale-50  group-hover:scale-100 transition-transform duration-300 ease-out shadow-lg cursor-pointer"
+            onClick={handlePlayClick}
+          >
+            <svg
+              className="w-8 h-8 text-gray-800 ml-1"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
         </div>
-      
-      </DialogTrigger>
-      <DialogContent className="p-2 min-w-full md:min-w-[calc(100vw-800px)]">
-        <AnimatedBorderTrail trailSize="lg">
-         <Image width={100} height={100} src='/homepage.png' alt="lds-logo"/>
-        </AnimatedBorderTrail>
-      </DialogContent>
-    </Dialog>
+      )}
+    </div>
   );
 }
