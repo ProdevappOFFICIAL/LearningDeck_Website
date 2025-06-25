@@ -10,7 +10,7 @@ export function HeroYoutubeModal() {
   };
 
   return (
-    <div className="my-5 rounded-md relative group">
+    <div className="my-5 rounded-md relative group select-none">
       <img
         src={isPlaying ? "/lds_dashboard.PNG" : "/lds_dashboard.PNG"}
         alt="hero image"

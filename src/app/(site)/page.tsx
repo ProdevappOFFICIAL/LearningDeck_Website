@@ -4,11 +4,17 @@ import { Play, ArrowRight, TrendingUp, Users } from "lucide-react";
 import Image from "next/image";
 import { HeroYoutubeModal } from "@/components/HeroyoutubeModal";
 import HeroHeaderSection from "@/components/sections/HerHeader";
+import BankingPage from "@/components/common/Features";
+import TestimonialsSection from "./testimonials/page";
+import Footer from "@/components/common/Footer";
+import EuphoriaFooter from "./footer/page";
+import PricingPlans from "./pricing/page";
+import FAQSection from "./faq/page";
 
 
 const EuphoriaLanding = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+    <div className="flex flex-col h-full w-full bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 relative overflow-hidden">
       {/* Animated Grid Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Grid Lines */}
@@ -207,72 +213,11 @@ const EuphoriaLanding = () => {
       </div>
 
       {/* Header Navigation */}
-      <header className="px-6 py-4 relative z-30">
-        <nav className="flex items-center justify-between max-w-7xl mx-auto">
-          {/* Logo */}
-          <div className="flex items-center space-x-2  rounded-full pr-4 pl-2  ">
-            <div className="w-8 sm:w-10 h-8 sm:h-10  rounded-lg flex items-center justify-center ">
-              <div className="text-gray-800 font-bold ">
-                <img
-                  src={"/lds_logo.png"}
-                  alt="Logo"
-                  className="rounded-full bg-blend-multiply sm:scale-95  px-2 py-[1px]"
-                />
-              </div>
-            </div>
-            <span className="text-gray-700 text-sm  sm:text-xl font-semibold">
-              LearningDeck
-            </span>
-          </div>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
-            <a
-              href="#"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              About
-            </a>
-            <a
-              href="#"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              Services
-            </a>
-            <a
-              href="#"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              Pricing
-            </a>
-            <a
-              href="#"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              Company
-            </a>
-            <a
-              href="#"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              Resources
-            </a>
-          </div>
-
-          {/* Auth Buttons */}
-          <div className="flex items-center space-x-2 sm:space-x-4  text-sm">
-            <button className="text-gray-700 hover:text-gray-900 px-4 py-1 sm:py-2 rounded-full border border-gray-300 hover:border-gray-400 transition-colors">
-              Sign in
-            </button>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 sm:py-2  rounded-full transition-colors">
-              Register
-            </button>
-          </div>
-        </nav>
-      </header>
+  
 
       {/* Main Content */}
-      <main className="px-6 py-12 relative z-30">
+      <main className="px-6 py-12 relative z-30 ">
         <div className="max-w-7xl mx-auto">
           {/* New Badge */}
           <div className="flex justify-center mb-8">
@@ -315,6 +260,11 @@ const EuphoriaLanding = () => {
           <HeroYoutubeModal />
         </div>
       </main>
+      <BankingPage />
+      <TestimonialsSection />
+       <PricingPlans/>
+      <FAQSection/>
+    
     </div>
   );
 };

@@ -131,7 +131,7 @@ const EuphoriaFooter = () => {
           </div>
 
           {/* App Download Section */}
-          <div className="mb-12">
+          <div className="mb-12 hidden">
             <h3 className="text-slate-800 font-medium mb-6">Download our App</h3>
             <div className="flex flex-col sm:flex-row gap-4">
               {/* Google Play Button */}
@@ -161,7 +161,7 @@ const EuphoriaFooter = () => {
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               {/* Copyright */}
               <div className="text-slate-500 text-sm">
-                © 2024 Euphoria. All rights reserved.
+                © 2025 LearningDeck Cooperation. All rights reserved.
               </div>
 
               {/* Footer Links */}

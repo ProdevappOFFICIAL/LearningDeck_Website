@@ -11,16 +11,16 @@ const TestimonialsSection = () => {
 
   const testimonials = [
     {
-      name: "Brian Ramirez",
-      role: "Financial Analyst",
-      avatar: "BR",
-      review: "This banking app has completely transformed how I manage my finances. It's user-friendly and efficient!",
+      name: "Oyewale Peter",
+      role: "School Adminstrator @UTSS(UNCLE TEE SCIENCE SCHOOLS AND COLLEGES)",
+      avatar: "OP",
+      review: "LearningDeck made our Elearning to be best",
       rating: 5,
       bgColor: "bg-purple-500"
     },
     {
-      name: "David Anderson",
-      role: "Marketing Manager",
+      name: "Ayomikun Faluyi",
+      role: "Developer",
       avatar: "DA",
       review: "I love the instant transfer feature! It makes sending money to friends and family a breeze.",
       rating: 5,

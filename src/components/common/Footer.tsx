@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <div className="text-center">
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-12">
+      <div className="bg-gradient-to-r from-blue-400 to-blue-500 p-12">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
           Ready to Run Secure Exams Anywhere?
         </h2>
