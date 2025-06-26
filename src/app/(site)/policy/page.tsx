@@ -297,6 +297,9 @@ const PrivacyPolicyPage = () => {
               </div>
             ))}
           </div>
+<p className="text-gray-700 leading-relaxed mb-4">
+  We may update this Privacy Policy as the platform evolves. We&apos;ll notify you via email or dashboard notice for major changes. Your continued use indicates agreement to the updated policy.
+</p>
 
           {/* Data Retention */}
           <div className="bg-gradient-to-r from-blue-50/80 to-indigo-50/80 backdrop-blur-sm border border-blue-200/50 rounded-2xl p-8 mb-12">
@@ -304,9 +307,7 @@ const PrivacyPolicyPage = () => {
               <FileText className="w-6 h-6 text-blue-600 mr-3" />
               <h3 className="text-xl font-bold text-gray-900">8. Changes to This Policy</h3>
             </div>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              We may update this Privacy Policy as the platform evolves. We'll notify you via email or dashboard notice for major changes. Your continued use indicates agreement to the updated policy.
-            </p>
+         
           </div>
 
           {/* Contact Information */}
@@ -315,9 +316,10 @@ const PrivacyPolicyPage = () => {
               <Mail className="w-6 h-6 text-blue-600 mr-3" />
               <h3 className="text-xl font-bold text-gray-900">Contact Us</h3>
             </div>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              If you have any questions about this Privacy Policy or our data practices, please don't hesitate to contact us. We're here to help and ensure your privacy concerns are addressed.
-            </p>
+        <p className="text-gray-700 leading-relaxed mb-6">
+  If you have any questions about this Privacy Policy or our data practices, please don&apos;t hesitate to contact us. We&apos;re here to help and ensure your privacy concerns are addressed.
+</p>
+
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center justify-center">
                 <Mail className="w-4 h-4 mr-2" />

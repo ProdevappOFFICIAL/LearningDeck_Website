@@ -16,7 +16,7 @@ const AuthPages = () => {
     agreeToTerms: false
   });
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: any) => {
     const { name, value, type, checked } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -24,7 +24,7 @@ const AuthPages = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
   };
@@ -202,8 +202,14 @@ const AuthPages = () => {
       <div className="relative z-10 w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="flex w-full text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-            Welcome to LearningDeck
+          <div className="flex w-full text-3xl md:text-4xl font-bold mb-2">
+          
+              <span className=" font-bold  mb-2 bg-gradient-to-r from-gray-700 to-blue-700  bg-clip-text text-transparent animate-pulse ">
+
+   Welcome  to LearningDeck
+
+</span>
+        
           </div>
           <p className="text-gray-600">
             Sign in to your account to continue
@@ -333,15 +339,16 @@ const AuthPages = () => {
 
           {/* Sign Up Link */}
           <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
-              Don't have an account?{' '}
-              <button
-                onClick={() => setCurrentPage('signup')}
-                className="font-medium text-blue-600 hover:text-blue-800 transition-colors"
-              >
-                Sign up
-              </button>
-            </p>
+          <p className="text-sm text-gray-600">
+  Don&apos;t have an account?{' '}
+  <button
+    onClick={() => setCurrentPage('signup')}
+    className="font-medium text-blue-600 hover:text-blue-800 transition-colors"
+  >
+    Sign up
+  </button>
+</p>
+
           </div>
         </div>
       </div>
@@ -357,9 +364,12 @@ const AuthPages = () => {
         <div className="text-center mb-8">
          
          
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-            Create Account
-          </h1>
+         
+              <span className="text-3xl md:text-4xl font-bold  mb-2 bg-gradient-to-r from-gray-700 to-blue-700 bg-clip-text text-transparent animate-pulse">
+
+                 Create Account
+              </span>
+      
           <p className="text-gray-600">
             Join us and start your journey today
           </p>

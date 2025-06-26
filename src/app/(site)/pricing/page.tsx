@@ -166,7 +166,7 @@ const PricingPlans = () => {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className="flex flex-col h-full w-full bg-white/70 backdrop-blur-sm border border-gray-200/60 rounded-2xl p-8 hover:bg-white/90 transition-all duration-300 hover:border-blue-300/70 hover:shadow-2xl hover:shadow-blue-500/10"
+              className="flex flex-col h-full w-full bg-white/70 backdrop-blur-sm border border-gray-400 rounded-2xl p-8 hover:bg-white/90 transition-all duration-300 hover:border-blue-300/70 hover:shadow-2xl hover:shadow-blue-500/10"
             >
               {/* Plan Header */}
               <div className="mb-8">

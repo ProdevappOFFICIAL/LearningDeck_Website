@@ -1,13 +1,65 @@
 "use client"
 import React, { useState } from 'react';
-import { ChevronRight, Calendar, User, ArrowRight } from 'lucide-react';
+import { ChevronRight, Calendar, User, ArrowRight, Wifi, Shield, Monitor, Database, Settings, Users, BookOpen, Laptop, X, LucideIcon } from 'lucide-react';
 
-const DifyBlogPage = () => {
-  const [activeTab, setActiveTab] = useState('All');
+// Type definitions
+interface FeaturedArticle {
+  title: string;
+  description: string;
+  author: string;
+  date: string;
+  category: string;
+  image: string;
+}
 
-  const tabs = ['All', 'Product', 'Release', 'How to', 'Developer', 'Event', 'Company'];
+interface SidebarRelease {
+  title: string;
+  description: string;
+  author: string;
+  date: string;
+  category: string;
+}
 
-  const featuredArticle = {
+interface MainArticle {
+  title: string;
+  description: string;
+  authors: string[];
+  date: string;
+  category: string;
+  version: string;
+  badge: string;
+}
+
+interface FeatureItem {
+  icon: LucideIcon;
+  bg: string;
+  label: string;
+}
+
+interface BlogFeature {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+}
+
+interface CategoryColors {
+  [key: string]: string;
+}
+
+interface BadgeColors {
+  [key: string]: string;
+}
+
+type TabType = 'All' | 'Product' | 'Release' | 'How to' | 'Developer' | 'Event' | 'Company';
+
+const DifyBlogPage: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<TabType>('All');
+  const [selectedBlog, setSelectedBlog] = useState<MainArticle | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+
+  const tabs: TabType[] = ['All', 'Product', 'Release', 'How to', 'Developer', 'Event', 'Company'];
+
+  const featuredArticle: FeaturedArticle = {
     title: "LearningDeck: Offline Exams, Online Reliability",
     description: "LearningDeck redefines digital assessment with a fully offline-first system — no internet required. Empower schools, training centers, and institutions to conduct seamless exams anytime, anywhere.",
     author: "Princeton Prudence",
@@ -16,7 +68,7 @@ const DifyBlogPage = () => {
     image: "/api/placeholder/400/300"
   };
 
-  const sidebarReleases = [
+  const sidebarReleases: SidebarRelease[] = [
     {
       title: "Pilot Program: 3 Months Free for 15 Devices",
       description: "Join our pilot and get full access to LearningDeck's offline exam tech. Run exams over LAN or Wi-Fi with zero internet.",
@@ -33,7 +85,7 @@ const DifyBlogPage = () => {
     }
   ];
 
-  const mainArticles = [
+  const mainArticles: MainArticle[] = [
     {
       title: "LearningDeck 1.0: Built for African Institutions, Powered by Local Networks",
       description: "Version 1.0 introduces a secure, customizable, and locally hosted exam environment. Exams are created via desktop UI, distributed through LAN or hotspot, and monitored in real time. No server cost. No internet. 100% control.",
@@ -126,14 +178,24 @@ const DifyBlogPage = () => {
     }
   ];
 
-  const filteredArticles = activeTab === 'All' 
+  const openBlogDialog = (blog: MainArticle): void => {
+    setSelectedBlog(blog);
+    setIsDialogOpen(true);
+  };
+
+  const closeBlogDialog = (): void => {
+    setIsDialogOpen(false);
+    setSelectedBlog(null);
+  };
+
+  const filteredArticles: MainArticle[] = activeTab === 'All' 
     ? mainArticles 
     : mainArticles.filter(article => 
         article.category.toLowerCase() === activeTab.toLowerCase().replace(' ', '')
       );
 
-  const getCategoryColor = (category) => {
-    const colors = {
+  const getCategoryColor = (category: string): string => {
+    const colors: CategoryColors = {
       'RELEASE': 'bg-green-50 text-green-600',
       'PRODUCT': 'bg-blue-50 text-blue-600',
       'DEVELOPER': 'bg-purple-50 text-purple-600',
@@ -144,8 +206,8 @@ const DifyBlogPage = () => {
     return colors[category] || 'bg-gray-50 text-gray-600';
   };
 
-  const getBadgeColor = (badge) => {
-    const colors = {
+  const getBadgeColor = (badge: string): string => {
+    const colors: BadgeColors = {
       'Offline-First Exams': 'bg-green-100 text-green-700',
       'Local Reliability': 'bg-blue-100 text-blue-700',
       'Custom UI': 'bg-purple-100 text-purple-700',
@@ -159,6 +221,30 @@ const DifyBlogPage = () => {
     };
     return colors[badge] || 'bg-gray-100 text-gray-700';  
   };
+
+  const featureIcons: FeatureItem[] = [
+    { icon: Monitor, bg: 'bg-blue-500', label: 'Desktop' },
+    { icon: Wifi, bg: 'bg-green-500', label: 'Offline' },
+    { icon: Shield, bg: 'bg-red-500', label: 'Secure' },
+    { icon: Database, bg: 'bg-purple-500', label: 'Local' },
+    { icon: Users, bg: 'bg-orange-500', label: 'Multi-user' },
+    { icon: Settings, bg: 'bg-gray-600', label: 'Config' },
+    { icon: BookOpen, bg: 'bg-indigo-500', label: 'Exams' },
+    { icon: Laptop, bg: 'bg-teal-500', label: 'Cross-platform' },
+    { icon: Monitor, bg: 'bg-pink-500', label: 'Monitor' },
+    { icon: Shield, bg: 'bg-cyan-500', label: 'Protected' },
+    { icon: Database, bg: 'bg-yellow-500', label: 'Storage' },
+    { icon: Users, bg: 'bg-emerald-500', label: 'Students' }
+  ];
+
+  const blogFeatures: BlogFeature[] = [
+    { icon: Monitor, title: 'Desktop Application', desc: 'Native Electron-based admin interface for full control' },
+    { icon: Wifi, title: 'Offline-First Design', desc: 'Zero internet dependency during exam execution' },
+    { icon: Shield, title: 'Security Features', desc: 'IP filtering and device monitoring for secure assessments' },
+    { icon: Database, title: 'Local Data Storage', desc: 'All exam data stored and processed locally' },
+    { icon: Users, title: 'Multi-Device Support', desc: 'Simultaneous connections via LAN or hotspot' },
+    { icon: Settings, title: 'Customizable Templates', desc: 'UI-driven exam builder with custom layouts' }
+  ];
 
   return (
     <div className="flex flex-col h-full w-full relative bg-gradient-to-br from-gray-50 to-blue-50">
@@ -363,44 +449,44 @@ const DifyBlogPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
           {/* Featured Article */}
           <div className="lg:col-span-2 transform hover:scale-[1.02] transition-all duration-700 ease-out">
-            <div className="bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-700 rounded-lg p-8 text-white relative overflow-hidden  hover:-3xl transition- duration-500">
-              {/* Animated background elements */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full animate-pulse"></div>
-                <div className="absolute bottom-10 right-10 w-24 h-24 bg-white rounded-full animate-bounce" style={{animationDelay: '1s'}}></div>
-                <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white rounded-full animate-ping" style={{animationDelay: '2s'}}></div>
-              </div>
+            <div className="bg-gradient-to-br from-blue-500 via-blue-400 to-indigo-500/60 rounded-lg p-8 text-white relative overflow-hidden  hover:-3xl transition- duration-500">
+              {/* Educational background elements */}
+        
               
               <div className="relative z-10">
                 <span className="inline-block bg-white/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-slideInUp">
                   {featuredArticle.category}
                 </span>
-                <h1 className="text-4xl font-bold mb-6 leading-tight animate-slideInUp" style={{animationDelay: '0.2s'}}>
-                  {featuredArticle.title}
+                <h1 className="flex items-center w-fit text-4xl font-bold mb-6 leading-tight animate-slideInUp" style={{animationDelay: '0.2s'}}>
+                 <img
+                      src={"/lds_logo.png"}
+                      alt="Logo"
+                      className=" bg-blend-multiply sm:scale-95  px-2 py-[1px]"
+                    /> {featuredArticle.title}
                 </h1>
                 <p className="text-blue-100 mb-8 text-lg leading-relaxed animate-slideInUp" style={{animationDelay: '0.4s'}}>
                   {featuredArticle.description}
                 </p>
                 
-                {/* Enhanced App Icons Grid with hover effects */}
+                {/* LearningDeck Feature Icons Grid */}
                 <div className="grid grid-cols-4 gap-3 mb-8 max-w-sm animate-slideInUp" style={{animationDelay: '0.6s'}}>
                   {[
-                    { bg: 'bg-red-500', text: 'G' },
-                    { bg: 'bg-orange-500', text: 'AI' },
-                    { bg: 'bg-green-500', text: '' },
-                    { bg: 'bg-black', text: 'GH' },
-                    { bg: 'bg-white/20', text: '' },
-                    { bg: 'bg-blue-600', text: '' },
-                    { bg: 'bg-green-600', text: '' },
-                    { bg: 'bg-black', text: '' },
-                    { bg: 'bg-white/20', text: '' },
-                    { bg: 'bg-white/20', text: '' },
-                    { bg: 'bg-purple-600', text: '' },
-                    { bg: 'bg-indigo-600', text: '' }
-                  ].map((icon, index) => (
+                    { icon: Monitor, bg: 'bg-blue-500', label: 'Desktop' },
+                    { icon: Wifi, bg: 'bg-green-500', label: 'Offline' },
+                    { icon: Shield, bg: 'bg-red-500', label: 'Secure' },
+                    { icon: Database, bg: 'bg-purple-500', label: 'Local' },
+                    { icon: Users, bg: 'bg-orange-500', label: 'Multi-user' },
+                    { icon: Settings, bg: 'bg-gray-600', label: 'Config' },
+                    { icon: BookOpen, bg: 'bg-indigo-500', label: 'Exams' },
+                    { icon: Laptop, bg: 'bg-teal-500', label: 'Cross-platform' },
+                    { icon: Monitor, bg: 'bg-pink-500', label: 'Monitor' },
+                    { icon: Shield, bg: 'bg-cyan-500', label: 'Protected' },
+                    { icon: Database, bg: 'bg-yellow-500', label: 'Storage' },
+                    { icon: Users, bg: 'bg-emerald-500', label: 'Students' }
+                  ].map((item, index) => (
                     <div key={index} className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center hover:scale-110 transition-transform duration-300 cursor-pointer group">
-                      <div className={`w-8 h-8 ${icon.bg} rounded-lg flex items-center justify-center text-white font-bold text-sm group-hover:rotate-12 transition-transform duration-300`}>
-                        {icon.text}
+                      <div className={`w-8 h-8 ${item.bg} rounded-lg flex items-center justify-center text-white group-hover:rotate-12 transition-transform duration-300`}>
+                        <item.icon className="w-4 h-4" />
                       </div>
                     </div>
                   ))}
@@ -414,12 +500,14 @@ const DifyBlogPage = () => {
                 </div>
               </div>
               
-              {/* Enhanced 3D Cube Icon */}
-              <div className="absolute top-1/2 right-8 transform -translate-y-1/2 animate-float">
+              {/* Enhanced LearningDeck Logo/Icon */}
+              <div className="absolute top-1/2 right-8 transform -translate-y-1/2 animate-eduFloat">
                 <div className="w-36 h-36 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center -2xl hover:rotate-12 transition-transform duration-500">
-                  <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center -xl">
-                    <div className="w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-900 rounded-xl"></div>
-                  </div>
+                 <img
+                      src={"/lds_logo.png"}
+                      alt="Logo"
+                      className=" bg-blend-multiply sm:scale-95  px-2 py-[1px]"
+                    />
                 </div>
               </div>
             </div>
@@ -430,7 +518,7 @@ const DifyBlogPage = () => {
             {sidebarReleases.map((release, index) => (
               <div 
                 key={index} 
-                className="bg-white rounded-md p-6 -lg border border-gray-100 hover:-xl transition-all duration-500 group cursor-pointer transform hover:-translate-y-2 animate-slideInRight"
+                className="bg-white rounded-md p-6 -lg border border-gray-400 hover:-xl transition-all duration-500 group cursor-pointer transform hover:-translate-y-2 animate-slideInRight"
                 style={{animationDelay: `${index * 0.2}s`}}
               >
                 <span className={`inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 ${getCategoryColor(release.category)}`}>
@@ -458,7 +546,7 @@ const DifyBlogPage = () => {
 
         {/* Enhanced Navigation Tabs */}
         <div className="mb-12">
-          <nav className="flex space-x-1 bg-white p-2 rounded-full border border-gray-100">
+          <nav className="flex space-x-1 bg-white p-2 rounded-full border border-gray-400">
             {tabs.map((tab, index) => (
               <button
                 key={tab}
@@ -484,8 +572,9 @@ const DifyBlogPage = () => {
           {filteredArticles.map((article, index) => (
             <div 
               key={index}
-              className="bg-white rounded-lg p-8 -lg border border-gray-100 hover:-2xl transition-all duration-500 group cursor-pointer transform hover:-translate-y-3 animate-slideInUp"
+              className="bg-white rounded-lg p-8 -lg border border-gray-400 hover:-2xl transition-all duration-500 group cursor-pointer transform hover:-translate-y-3 animate-slideInUp"
               style={{animationDelay: `${index * 0.1}s`}}
+              onClick={() => openBlogDialog(article)}
             >
               <div className="flex items-start justify-between mb-6">
                 <span className={`inline-block px-4 py-2 rounded-full text-sm font-semibold ${getCategoryColor(article.category)}`}>
@@ -529,6 +618,155 @@ const DifyBlogPage = () => {
         </div>
       </div>
 
+      {/* Blog Dialog Modal */}
+      {isDialogOpen && selectedBlog && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn">
+          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl animate-slideInUp">
+            {/* Dialog Header */}
+            <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6 flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <span className={`px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm`}>
+                  {selectedBlog.category}
+                </span>
+                <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getBadgeColor(selectedBlog.badge)}`}>
+                  {selectedBlog.badge}
+                </span>
+              </div>
+              <button 
+                onClick={closeBlogDialog}
+                className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors duration-300"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Dialog Content */}
+            <div className="p-8 overflow-y-auto max-h-[calc(90vh-120px)]">
+              {/* Blog Title */}
+              <h1 className="text-3xl font-bold text-gray-900 mb-6 leading-tight">
+                {selectedBlog.title}
+              </h1>
+
+              {/* Author and Date Info */}
+            {/* Author and Date Info */}
+              <div className="flex items-center mb-8 pb-6 border-b border-gray-200">
+                <div className="flex -space-x-2 mr-4">
+                  {selectedBlog.authors.map((_, authorIndex) => (
+                    <div key={authorIndex} className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full border-2 border-white"></div>
+                  ))}
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-900">{selectedBlog.authors.join(' & ')}</p>
+                  <p className="text-gray-500 text-sm">{selectedBlog.date} • {selectedBlog.version}</p>
+                </div>
+              </div>
+
+              {/* Blog Description */}
+              <div className="prose prose-lg max-w-none mb-8">
+                <p className="text-gray-700 leading-relaxed text-lg">
+                  {selectedBlog.description}
+                </p>
+              </div>
+
+              {/* Sample Blog Content */}
+              <div className="prose prose-lg max-w-none">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">Overview</h2>
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  LearningDeck represents a paradigm shift in educational technology, specifically designed for African institutions where reliable internet connectivity remains a challenge. Our offline-first approach ensures that educational assessments can be conducted seamlessly regardless of network conditions.
+                </p>
+
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Features</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  {[
+                    { icon: Monitor, title: 'Desktop Application', desc: 'Native Electron-based admin interface for full control' },
+                    { icon: Wifi, title: 'Offline-First Design', desc: 'Zero internet dependency during exam execution' },
+                    { icon: Shield, title: 'Security Features', desc: 'IP filtering and device monitoring for secure assessments' },
+                    { icon: Database, title: 'Local Data Storage', desc: 'All exam data stored and processed locally' },
+                    { icon: Users, title: 'Multi-Device Support', desc: 'Simultaneous connections via LAN or hotspot' },
+                    { icon: Settings, title: 'Customizable Templates', desc: 'UI-driven exam builder with custom layouts' }
+                  ].map((feature, index) => (
+                    <div key={index} className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                      <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <feature.icon className="w-5 h-5 text-blue-600" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 mb-1">{feature.title}</h3>
+                        <p className="text-gray-600 text-sm">{feature.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">Technical Implementation</h2>
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  Built on a robust technology stack including Electron.js for the desktop application, Next.js for the web interface, and a custom local REST API for real-time data synchronization between devices. The system operates entirely within a local network environment, eliminating dependency on external servers or cloud services.
+                </p>
+
+                <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
+                  <h3 className="font-semibold text-blue-900 mb-2">Why This Matters</h3>
+                  <p className="text-blue-800">
+                    Traditional online exam platforms fail when internet connectivity is unreliable. LearningDeck ensures educational continuity by prioritizing local-first architecture, making it ideal for schools and training centers across Africa.
+                  </p>
+                </div>
+
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">Getting Started</h2>
+                <div className="space-y-4 mb-8">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">1</div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Download & Install</h4>
+                      <p className="text-gray-600 text-sm">Install the LearningDeck desktop application on your admin device</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">2</div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Create Exam</h4>
+                      <p className="text-gray-600 text-sm">Use the visual exam builder to create custom assessments</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">3</div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Deploy Locally</h4>
+                      <p className="text-gray-600 text-sm">Share via LAN or create a hotspot for student devices to connect</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">4</div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Monitor & Evaluate</h4>
+                      <p className="text-gray-600 text-sm">Real-time monitoring and instant result compilation</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex items-center justify-between pt-8 border-t border-gray-200">
+                <div className="flex items-center space-x-4">
+                  <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300">
+                    Try LearningDeck
+                  </button>
+                  <button className="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-300">
+                    View Documentation
+                  </button>
+                </div>
+                <div className="flex items-center space-x-2 text-gray-500">
+                  <span className="text-sm">Share this article</span>
+                  <div className="flex space-x-2">
+                    <button className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors duration-300">
+                      <span className="text-xs">→</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Add CSS for animations */}
       <style jsx>{`
         @keyframes slideInUp {
           from {
@@ -540,7 +778,7 @@ const DifyBlogPage = () => {
             transform: translateY(0);
           }
         }
-
+        
         @keyframes slideInRight {
           from {
             opacity: 0;
@@ -551,8 +789,17 @@ const DifyBlogPage = () => {
             transform: translateX(0);
           }
         }
-
-        @keyframes float {
+        
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        
+        @keyframes eduFloat {
           0%, 100% {
             transform: translateY(-10px) rotate(0deg);
           }
@@ -560,21 +807,25 @@ const DifyBlogPage = () => {
             transform: translateY(10px) rotate(5deg);
           }
         }
-
+        
         .animate-slideInUp {
-          animation: slideInUp 0.8s ease-out forwards;
+          animation: slideInUp 0.6s ease-out forwards;
           opacity: 0;
         }
-
+        
         .animate-slideInRight {
-          animation: slideInRight 0.8s ease-out forwards;
+          animation: slideInRight 0.6s ease-out forwards;
           opacity: 0;
         }
-
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
+        
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out;
         }
-
+        
+        .animate-eduFloat {
+          animation: eduFloat 6s ease-in-out infinite;
+        }
+        
         .line-clamp-3 {
           display: -webkit-box;
           -webkit-line-clamp: 3;

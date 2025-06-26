@@ -10,6 +10,7 @@ import Footer from "@/components/common/Footer";
 import EuphoriaFooter from "./footer/page";
 import PricingPlans from "./pricing/page";
 import FAQSection from "./faq/page";
+import LearningDeckAudience from "./buitfor/page";
 
 
 const EuphoriaLanding = () => {
@@ -241,10 +242,14 @@ const EuphoriaLanding = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-              <button className="bg-gradient-to-tr from-blue-400 to-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-full flex items-center space-x-2 transition-colors">
-                <span className="font-medium">Create account</span>
+                <a href="/auth/signin"> <button className="bg-gradient-to-tr from-blue-400 to-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-full flex items-center space-x-2 transition-colors">
+                <span className="font-medium">
+               
+  Create account
+                
+                </span>
                 <ArrowRight className="w-5 h-5" />
-              </button>
+              </button></a>
 
               <button className="bg-white border  backdrop-blur-sm text-gray-800 pl-2 pr-6 py-2 rounded-full flex items-center space-x-2 hover:bg-gray-800/20 transition-colors">
               <div className="flex p-3 items-center bg-blue-600 text-white rounded-full">
@@ -261,6 +266,7 @@ const EuphoriaLanding = () => {
         </div>
       </main>
       <BankingPage />
+      <LearningDeckAudience/>
       <TestimonialsSection />
        <PricingPlans/>
       <FAQSection/>

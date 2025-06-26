@@ -68,7 +68,7 @@ const BankingPage: React.FC = () => {
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="group relative bg-white/70 backdrop-blur-sm rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 border border-blue-300/50"
+              className="group relative bg-white/70 backdrop-blur-sm rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 border border-gray-400"
             >
               {/* Gradient overlay on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

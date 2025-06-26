@@ -1,10 +1,30 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { ArrowRight, User, GraduationCap, Mail, Phone, MapPin, Users, BookOpen, CheckCircle, ChevronLeft } from "lucide-react";
 
-const JoinPilotProgram = () => {
-  const [userType, setUserType] = useState("");
-  const [formData, setFormData] = useState({
+// Type definitions
+type UserType = "individual" | "school" | "";
+
+type ExamType = "Academic Tests" | "Certification Exams" | "Entrance Exams" | "Professional Assessments" | "Skills Tests" | "Other";
+
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  organization: string;
+  position: string;
+  location: string;
+  studentsCount: string;
+  examTypes: ExamType[];
+  experience: string;
+  goals: string;
+  hearAbout: string;
+}
+
+const JoinPilotProgram: React.FC = () => {
+  const [userType, setUserType] = useState<UserType>("");
+  const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
     email: "",
@@ -18,9 +38,9 @@ const JoinPilotProgram = () => {
     goals: "",
     hearAbout: ""
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -28,7 +48,7 @@ const JoinPilotProgram = () => {
     }));
   };
 
-  const handleExamTypeChange = (examType) => {
+  const handleExamTypeChange = (examType: ExamType) => {
     setFormData(prev => ({
       ...prev,
       examTypes: prev.examTypes.includes(examType)
@@ -37,8 +57,27 @@ const JoinPilotProgram = () => {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     setIsSubmitted(true);
+  };
+
+  const resetForm = (): void => {
+    setIsSubmitted(false);
+    setUserType("");
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      organization: "",
+      position: "",
+      location: "",
+      studentsCount: "",
+      examTypes: [],
+      experience: "",
+      goals: "",
+      hearAbout: ""
+    });
   };
 
   if (isSubmitted) {
@@ -94,27 +133,11 @@ const JoinPilotProgram = () => {
               Thank You!
             </h1>
             <p className="text-gray-600 text-lg mb-8 max-w-md mx-auto">
-              Your application has been submitted successfully. We'll review your information and get back to you within 2-3 business days.
+              Your application has been submitted successfully. We&apos;ll review your information and get back to you within 2–3 business days.
             </p>
+
             <button
-              onClick={() => {
-                setIsSubmitted(false);
-                setUserType("");
-                setFormData({
-                  firstName: "",
-                  lastName: "",
-                  email: "",
-                  phone: "",
-                  organization: "",
-                  position: "",
-                  location: "",
-                  studentsCount: "",
-                  examTypes: [],
-                  experience: "",
-                  goals: "",
-                  hearAbout: ""
-                });
-              }}
+              onClick={resetForm}
               className="bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105"
             >
               Submit Another Application
@@ -124,6 +147,15 @@ const JoinPilotProgram = () => {
       </div>
     );
   }
+
+  const examTypeOptions: ExamType[] = [
+    "Academic Tests", 
+    "Certification Exams", 
+    "Entrance Exams", 
+    "Professional Assessments", 
+    "Skills Tests", 
+    "Other"
+  ];
 
   return (
     <div className="flex flex-col h-full w-full bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 relative overflow-hidden">
@@ -264,9 +296,9 @@ const JoinPilotProgram = () => {
                 </h2>
                 <button
                   onClick={() => setUserType("")}
-                  className="flex items-center w-fit bg-blue-600 scale-90 hover:scale-100 transition-all  rounded-full px-3 py-1 text-gray-100  duration-400"
+                  className="flex items-center w-fit bg-blue-600 scale-90 hover:scale-100 transition-all rounded-full px-3 py-1 text-gray-100 duration-400"
                 >
-               <ChevronLeft/>   Change Type
+                  <ChevronLeft />   Change Type
                 </button>
               </div>
 
@@ -421,7 +453,7 @@ const JoinPilotProgram = () => {
                 <div className="space-y-3">
                   <label className="block text-sm font-medium text-gray-700">Types of Exams You Conduct *</label>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                    {["Academic Tests", "Certification Exams", "Entrance Exams", "Professional Assessments", "Skills Tests", "Other"].map((type) => (
+                    {examTypeOptions.map((type) => (
                       <label key={type} className="flex items-center space-x-2 cursor-pointer group">
                         <input
                           type="checkbox"

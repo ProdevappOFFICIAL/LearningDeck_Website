@@ -1,8 +1,147 @@
 "use client"
-import React from "react";
-import { Play, ArrowRight, Download, Smartphone, Monitor, Globe, Code, Database, Shield, Star, Users, Zap } from "lucide-react";
+import React, { useState } from "react";
+import { Play, ArrowRight, Download, Smartphone, Monitor, Globe, Code, Database, Shield, Star, Users, Zap, CheckCircle, Home } from "lucide-react";
 
 const SoftwareAppsPage = () => {
+  const [showThankYou, setShowThankYou] = useState(false);
+  const [downloadedApp, setDownloadedApp] = useState("");
+
+  const handleDownload = (appName: any) => {
+    setDownloadedApp(appName);
+    setShowThankYou(true);
+    // Simulate actual download
+    setTimeout(() => {
+      console.log(`Downloading ${appName}...`);
+    }, 100);
+  };
+
+  const handleBackToHome = () => {
+    setShowThankYou(false);
+    setDownloadedApp("");
+  };
+
+  if (showThankYou) {
+    return (
+      <div className="flex flex-col h-screen w-full bg-gradient-to-br from-green-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Success particles */}
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={`particle-${i}`}
+              className="absolute w-2 h-2 bg-green-500/60 rounded-full animate-bounce"
+              style={{
+                left: `${10 + (i * 7)}%`,
+                top: `${20 + ((i * 11) % 60)}%`,
+                animationDelay: `${i * 0.2}s`,
+                animationDuration: `${2 + (i % 3)}s`,
+              }}
+            ></div>
+          ))}
+
+          {/* Floating success rings */}
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 border-2 border-green-400/30 rounded-full animate-ping"></div>
+          <div 
+            className="absolute bottom-1/4 right-1/4 w-24 h-24 border-2 border-blue-400/40 rounded-full animate-ping"
+            style={{ animationDelay: '1s' }}
+          ></div>
+
+          {/* Background orbs */}
+          <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-to-r from-green-200/30 to-blue-200/30 rounded-full blur-3xl animate-pulse"></div>
+          <div
+            className="absolute -bottom-40 -right-40 w-96 h-96 bg-gradient-to-r from-cyan-200/30 to-green-200/30 rounded-full blur-3xl animate-pulse"
+            style={{ animationDelay: "1s" }}
+          ></div>
+        </div>
+
+        {/* Thank You Content */}
+        <div className="flex flex-col h-full items-center justify-center px-6 relative z-10 my-10">
+          <div className="max-w-2xl mx-auto text-center">
+            {/* Success Icon */}
+            <div className="mb-8 flex justify-center">
+              <div className="relative">
+                <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center shadow-lg animate-pulse">
+                  <CheckCircle className="w-12 h-12 text-white" />
+                </div>
+                <div className="absolute inset-0 w-24 h-24 bg-green-400/30 rounded-full animate-ping"></div>
+              </div>
+            </div>
+
+            {/* Thank You Message */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                Thank You!
+              </span>
+            </h1>
+
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 mb-4">
+              Your download has started
+            </h2>
+
+            <div className="bg-white/70 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-8 mb-8 shadow-lg">
+              <div className="flex items-center justify-center mb-4">
+                <img
+                  src={"/lds_logo.png"}
+                  alt="Logo"
+                  className="bg-blend-multiply sm:scale-95 px-2 py-[1px]"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{downloadedApp}</h3>
+              <p className="text-gray-600 mb-4">Your download should begin automatically. If it doesn&apos;t start, please check your downloads folder or contact support.</p>
+              
+              {/* Download Progress Simulation */}
+              <div className="w-full bg-gray-200 rounded-full h-3 mb-4 overflow-hidden">
+                <div 
+                  className="h-3 bg-gradient-to-r from-green-500 to-blue-500 rounded-full animate-pulse"
+                  style={{
+                    width: '100%',
+                    animation: 'downloadProgress 3s ease-in-out infinite'
+                  }}
+                ></div>
+              </div>
+              <p className="text-sm text-gray-500">Download in progress...</p>
+            </div>
+
+            {/* Next Steps */}
+            <div className="bg-white/50 backdrop-blur-sm border border-gray-200/50 rounded-xl p-6 mb-8">
+              <h4 className="text-lg font-semibold text-gray-900 mb-3">What&apos;s Next?</h4>
+              <div className="text-left space-y-2 text-gray-600">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <span>Check your downloads folder for the installer</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <span>Run the installer and follow the setup wizard</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <span>Launch the application and start using it</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+     
+            {/* Footer Message */}
+            <p className="text-sm text-gray-500 mt-8">
+              Having trouble with the download? Contact our support team at{' '}
+              <span className="text-blue-600 font-medium">support@learningdeck.com</span>
+            </p>
+          </div>
+        </div>
+
+        <style jsx>{`
+          @keyframes downloadProgress {
+            0% { width: 0%; }
+            50% { width: 75%; }
+            100% { width: 100%; }
+          }
+        `}</style>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col h-full w-full bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 relative overflow-hidden">
       {/* Animated Grid Background */}
@@ -227,9 +366,6 @@ const SoftwareAppsPage = () => {
             <p className="text-gray-600 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
             Explore LearningDeck Apps and Services
             </p>
-
-            {/* CTA Buttons */}
-       
           </div>
 
           {/* Apps Grid */}
@@ -261,7 +397,10 @@ const SoftwareAppsPage = () => {
                 </div>
               
               </div>
-              <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-full hover:opacity-90 transition-opacity flex items-center justify-center space-x-2">
+              <button 
+                onClick={() => handleDownload("LearningDeck Exam Manager")}
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-full hover:opacity-90 transition-opacity flex items-center justify-center space-x-2"
+              >
                 <Download className="w-4 h-4" />
                 <span>Download</span>
               </button>
@@ -291,112 +430,13 @@ const SoftwareAppsPage = () => {
   <span className="flex px-2 py-1 rounded-md text-sm font-medium bg-green-200/60 border border-gray-400">MOBILE</span>
 
                 </div>
-              <button className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-3 rounded-full hover:opacity-90 transition-opacity flex items-center justify-center space-x-2">
+              <button 
+                onClick={() => handleDownload("LearningDeck Elearn")}
+                className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-3 rounded-full hover:opacity-90 transition-opacity flex items-center justify-center space-x-2"
+              >
                 <Download className="w-4 h-4" />
                 <span>Download</span>
               </button>
-            </div>
-
-            {/* Web Apps Card */}
-            <div className="hidden bg-white/70 backdrop-blur-sm border border-gray-200/50 rounded-md border-gray-400  p-8 hover:bg-white/90 transition-all duration-300">
-              <div className="text-green-600 mb-4">
-                <Globe className="w-12 h-12" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Web Apps</h3>
-              <p className="text-gray-600 mb-6">Progressive web applications with offline capabilities and responsive design</p>
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-1">
-                  <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                  <span className="text-sm font-medium">4.7</span>
-                </div>
-                <span className="text-sm text-gray-600">75K+ downloads</span>
-              </div>
-              <button className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-3 rounded-full hover:opacity-90 transition-opacity flex items-center justify-center space-x-2">
-                <Download className="w-4 h-4" />
-                <span>Download</span>
-              </button>
-            </div>
-
-            {/* Enterprise Software Card */}
-            <div className="hidden bg-white/70 backdrop-blur-sm border border-gray-200/50 rounded-md border-gray-400  p-8 hover:bg-white/90 transition-all duration-300">
-              <div className="text-indigo-600 mb-4">
-                <Shield className="w-12 h-12" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Enterprise Software</h3>
-              <p className="text-gray-600 mb-6">Secure, scalable enterprise solutions with advanced security and compliance</p>
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-1">
-                  <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                  <span className="text-sm font-medium">4.9</span>
-                </div>
-                <span className="text-sm text-gray-600">25K+ installs</span>
-              </div>
-              <button className="w-full bg-gradient-to-r from-indigo-600 to-indigo-700 text-white py-3 rounded-full hover:opacity-90 transition-opacity flex items-center justify-center space-x-2">
-                <Download className="w-4 h-4" />
-                <span>Get Started</span>
-              </button>
-            </div>
-
-            {/* Custom Development Card */}
-            <div className="hidden bg-white/70 backdrop-blur-sm border border-gray-200/50 rounded-md border-gray-400  p-8 hover:bg-white/90 transition-all duration-300">
-              <div className="text-orange-600 mb-4">
-                <Code className="w-12 h-12" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Custom Development</h3>
-              <p className="text-gray-600 mb-6">Tailored software solutions built to your exact specifications and requirements</p>
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-1">
-                  <Users className="w-4 h-4 text-blue-600" />
-                  <span className="text-sm font-medium">500+ projects</span>
-                </div>
-                <span className="text-sm text-gray-600">Enterprise</span>
-              </div>
-              <button className="w-full bg-gradient-to-r from-orange-600 to-orange-700 text-white py-3 rounded-full hover:opacity-90 transition-opacity flex items-center justify-center space-x-2">
-                <span>Contact Sales</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Database Solutions Card */}
-            <div className="hidden bg-white/70 backdrop-blur-sm border border-gray-200/50 rounded-md border-gray-400  p-8 hover:bg-white/90 transition-all duration-300">
-              <div className="text-cyan-600 mb-4">
-                <Database className="w-12 h-12" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Database Solutions</h3>
-              <p className="text-gray-600 mb-6">Robust database management with cloud integration and real-time sync</p>
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-1">
-                  <Zap className="w-4 h-4 text-yellow-500" />
-                  <span className="text-sm font-medium">99.9% uptime</span>
-                </div>
-                <span className="text-sm text-gray-600">Cloud ready</span>
-              </div>
-              <button className="w-full bg-gradient-to-r from-cyan-600 to-cyan-700 text-white py-3 rounded-full hover:opacity-90 transition-opacity flex items-center justify-center space-x-2">
-                <Download className="w-4 h-4" />
-                <span>Try Free</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Stats Section */}
-          <div className="hidden bg-white/70 backdrop-blur-sm border border-gray-200/50 rounded-3xl p-12 text-center">
-            <div className="grid md:grid-cols-4 gap-8">
-              <div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">500K+</div>
-                <div className="text-gray-600">Downloads</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">50K+</div>
-                <div className="text-gray-600">Active Users</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">99.9%</div>
-                <div className="text-gray-600">Uptime</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">24/7</div>
-                <div className="text-gray-600">Support</div>
-              </div>
             </div>
           </div>
         </div>

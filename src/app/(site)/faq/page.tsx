@@ -61,12 +61,13 @@ const FAQSection: React.FC = () => {
         {/* Header Section */}
         <div className="text-center mb-16">
           
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+         <span className="bg-gradient-to-r from-gray-700 to-blue-700 scale-75 hover:scale-100 bg-clip-text text-transparent animate-pulse text-4xl font-bold">
             Frequently Asked Questions
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Everything you need to know about LearningDeck's offline-first exam platform
-          </p>
+          </span>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+  Everything you need to know about LearningDeck&apos;s offline-first exam platform
+</p>
+
         </div>
 
         {/* FAQ Items */}

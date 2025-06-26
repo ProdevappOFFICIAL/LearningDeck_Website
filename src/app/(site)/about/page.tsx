@@ -1,177 +1,145 @@
 "use client"
 import React, { useState } from "react";
-import { ArrowRight, Shield, Users, Zap, Target, Award, Globe, CheckCircle, Play, TrendingUp, BookOpen, Clock, Star } from "lucide-react";
+import { ArrowRight, Shield, Wifi, WifiOff, Users, CheckCircle, Play, Globe, Server, Monitor, Lock, Zap } from "lucide-react";
 
-const AboutPage = () => {
-  const [activeTab, setActiveTab] = useState("mission");
+const LearningDeckPage = () => {
+  const [activeTab, setActiveTab] = useState("features");
 
   const stats = [
-    { number: "10K+", label: "Exams Conducted", icon: BookOpen },
-    { number: "500+", label: "Institutions Trust Us", icon: Users },
-    { number: "99.9%", label: "System Uptime", icon: Shield },
-    { number: "50+", label: "Countries Served", icon: Globe }
+    { number: "0%", label: "Internet Required", icon: WifiOff },
+    { number: "3min", label: "Setup Time", icon: Zap },
+    { number: "1000+", label: "Students Per Exam", icon: Users },
+    { number: "100%", label: "Offline Secure", icon: Shield }
   ];
 
-  const values = [
+  const features = [
     {
-      icon: Shield,
-      title: "Security First",
-      description: "Military-grade encryption and robust security protocols protect every examination process."
+      icon: WifiOff,
+      title: "Offline-First by Design",
+      description: "Creates a local API server on your network (LAN, Wi-Fi, or hotspot). Students connect via IP like 192.168.1.x—even in remote villages."
     },
     {
-      icon: Zap,
-      title: "Innovation",
-      description: "Cutting-edge technology that works seamlessly online and offline, anytime, anywhere."
+      icon: Monitor,
+      title: "Zero Tech Skills Needed",
+      description: "If you can open an app, you can run a full exam. Choose a template, start testing—no developers required."
     },
     {
-      icon: Users,
-      title: "Accessibility",
-      description: "Designed for everyone - from individual educators to large educational institutions."
+      icon: Lock,
+      title: "Secure & Controlled",
+      description: "Only devices on your network can connect. Monitor connections, block unknown devices, prevent unauthorized access."
     },
     {
-      icon: Target,
-      title: "Reliability",
-      description: "Proven track record of delivering consistent, dependable examination solutions."
+      icon: Server,
+      title: "Local Infrastructure",
+      description: "Turn any laptop into a secure exam host. No cloud dependency, no subscription lock-ins."
     }
   ];
 
-  const timeline = [
+  const steps = [
+    "Install the LearningDeck App",
+    "Create an Exam Using a Custom Template", 
+    "Choose Local Network (LAN / Wi-Fi / Hotspot)",
+    "Students Connect via IP (e.g., 192.168.1.2)",
+    "Monitor All Devices in Real-Time",
+    "Run the Exam — Completely Offline"
+  ];
+
+  const pricing = [
     {
-      year: "2020",
-      title: "Foundation",
-      description: "Started with a vision to revolutionize examination systems worldwide."
+      name: "Pilot",
+      price: "Free",
+      duration: "(3 months)",
+      devices: "15",
+      templates: "1",
+      support: "Email (48h)",
+      highlight: false
     },
     {
-      year: "2021",
-      title: "First Launch",
-      description: "Released our MVP to 50+ educational institutions across 5 countries."
+      name: "Starter", 
+      price: "₦6,000",
+      duration: "/ $5",
+      devices: "50",
+      templates: "2",
+      support: "Email (24h)",
+      highlight: true
     },
     {
-      year: "2022",
-      title: "Scaling Up",
-      description: "Expanded to serve 500+ institutions with enhanced offline capabilities."
+      name: "Growth",
+      price: "₦60,000",
+      duration: "/ $45", 
+      devices: "250",
+      templates: "5",
+      support: "Priority Email",
+      highlight: false
     },
     {
-      year: "2023",
-      title: "Global Reach",
-      description: "Achieved presence in 50+ countries with 10,000+ successful examinations."
-    },
-    {
-      year: "2024",
-      title: "Innovation Hub",
-      description: "Launched AI-powered features and advanced analytics for better insights."
+      name: "Institution",
+      price: "₦600,000+",
+      duration: "/ $400+",
+      devices: "1000+",
+      templates: "Unlimited",
+      support: "Dedicated Rep",
+      highlight: false
     }
   ];
 
-  const team = [
-    {
-      name: "Sarah Johnson",
-      role: "CEO & Co-Founder",
-      description: "Former EdTech executive with 15+ years in educational technology solutions."
-    },
-    {
-      name: "Michael Chen",
-      role: "CTO & Co-Founder",
-      description: "Security expert and software architect specializing in offline-first systems."
-    },
-    {
-      name: "Dr. Emily Rodriguez",
-      role: "Head of Education",
-      description: "Educational psychologist ensuring our platform meets pedagogical standards."
-    },
-    {
-      name: "David Kim",
-      role: "Head of Engineering",
-      description: "Full-stack developer passionate about creating seamless user experiences."
-    }
+  const useCases = [
+    "Secondary Schools",
+    "Universities & Colleges", 
+    "Government Training Centers",
+    "NGOs & Certification Bodies",
+    "Remote & Underserved Communities"
   ];
 
   return (
-    <div className="flex flex-col min-h-screen w-full bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 relative overflow-hidden">
-      {/* Animated Grid Background */}
+    <div className="flex flex-col min-h-screen w-full bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+      {/* Animated Network Grid Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 opacity-30">
-          {/* Vertical Lines */}
-          <div className="absolute left-0 top-0 w-full h-full">
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={`v-${i}`}
-                className="absolute h-full border-l border-gray-300/20"
-                style={{
-                  left: `${i * 5}%`,
-                  animationDelay: `${i * 0.1}s`,
-                }}
-              >
-                <div 
-                  className="w-px h-full bg-gradient-to-b from-transparent via-blue-400/30 to-transparent animate-pulse"
-                  style={{ animationDuration: `${3 + (i % 3)}s` }}
-                ></div>
+        <div className="absolute inset-0 opacity-20">
+          {/* Network nodes */}
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={`node-${i}`}
+              className="absolute w-3 h-3 bg-blue-500 rounded-full animate-pulse"
+              style={{
+                left: `${10 + (i * 7)}%`,
+                top: `${20 + ((i * 11) % 60)}%`,
+                animationDelay: `${i * 0.3}s`,
+                animationDuration: `${2 + (i % 3)}s`,
+              }}
+            >
+              {/* Connection lines */}
+              <div className="absolute inset-0">
+                {i > 0 && (
+                  <div 
+                    className="absolute w-px bg-gradient-to-r from-blue-400/50 to-transparent h-20 -rotate-45 origin-center animate-pulse"
+                    style={{ animationDelay: `${i * 0.2}s` }}
+                  ></div>
+                )}
+                {i < 11 && (
+                  <div 
+                    className="absolute w-16 h-px bg-gradient-to-r from-blue-400/50 to-transparent animate-pulse"
+                    style={{ animationDelay: `${i * 0.4}s` }}
+                  ></div>
+                )}
               </div>
-            ))}
-          </div>
-          
-          {/* Horizontal Lines */}
-          <div className="absolute left-0 top-0 w-full h-full">
-            {[...Array(15)].map((_, i) => (
-              <div
-                key={`h-${i}`}
-                className="absolute w-full border-t border-gray-300/20"
-                style={{
-                  top: `${i * 6.67}%`,
-                  animationDelay: `${i * 0.15}s`,
-                }}
-              >
-                <div 
-                  className="h-px w-full bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent animate-pulse"
-                  style={{ animationDuration: `${4 + (i % 2)}s` }}
-                ></div>
-              </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
-        {/* Moving Grid Highlights */}
-        <div className="absolute inset-0">
-          {[...Array(8)].map((_, i) => (
-            <div
-              key={`intersection-${i}`}
-              className="absolute w-2 h-2 bg-blue-500/40 rounded-full animate-ping"
-              style={{
-                left: `${20 + (i * 10)}%`,
-                top: `${15 + ((i * 13) % 70)}%`,
-                animationDelay: `${i * 0.8}s`,
-                animationDuration: '3s',
-              }}
-            ></div>
-          ))}
+        {/* Floating Africa outline */}
+        <div className="absolute top-20 right-10 opacity-10">
+          <svg width="200" height="200" viewBox="0 0 200 200" className="animate-pulse">
+            <path d="M100 20 C140 30, 160 60, 150 100 C160 140, 130 170, 100 160 C70 170, 40 140, 50 100 C40 60, 60 30, 100 20 Z" 
+                  fill="currentColor" className="text-blue-600"/>
+          </svg>
         </div>
       </div>
 
-      {/* Animated Background Circles */}
+      {/* Background Circles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-to-r from-blue-200/30 to-purple-200/30 rounded-full blur-3xl animate-pulse"></div>
-        <div
-          className="absolute -bottom-40 -right-40 w-96 h-96 bg-gradient-to-r from-cyan-200/30 to-blue-200/30 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "1s" }}
-        ></div>
-        <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-indigo-200/25 to-pink-200/25 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "2s" }}
-        ></div>
-
-        {/* Floating geometric elements */}
-        <div
-          className="absolute top-20 left-1/4 w-4 h-4 bg-yellow-500/60 rounded-full animate-bounce"
-          style={{ animationDelay: "0.5s", animationDuration: "3s" }}
-        ></div>
-        <div
-          className="absolute top-40 right-1/4 w-6 h-6 bg-emerald-500/50 rounded-full animate-bounce"
-          style={{ animationDelay: "1.5s", animationDuration: "4s" }}
-        ></div>
-        <div
-          className="absolute bottom-40 left-1/3 w-3 h-3 bg-pink-500/70 rounded-full animate-bounce"
-          style={{ animationDelay: "2.5s", animationDuration: "2.5s" }}
-        ></div>
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-to-r from-blue-200/20 to-indigo-200/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-gradient-to-r from-purple-200/20 to-blue-200/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
       </div>
 
       {/* Main Content */}
@@ -179,20 +147,30 @@ const AboutPage = () => {
         <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-16">
+            <div className="inline-flex items-center bg-blue-100/80 backdrop-blur-sm border border-blue-200/50 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <Globe className="w-4 h-4 mr-2" />
+              Made for Africa • Offline-First
+            </div>
+            
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-gray-700 to-blue-700 bg-clip-text text-transparent animate-fade-in">
-                About Our Mission
+              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                LearningDeck
               </span>
             </h1>
+            
+            <p className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">
+              Run Secure Exams Anywhere, Without the Internet
+            </p>
+            
             <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
-              We're revolutionizing the way examinations are conducted worldwide, making secure, 
-              scalable testing accessible to educators and institutions everywhere.
+              The first offline-first exam server built for Africa. Turn any laptop into a secure exam host. 
+              No internet required. No coding needed. Just reliable digital exams for schools everywhere.
             </p>
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white px-8 py-4 rounded-full flex items-center space-x-2 transition-all duration-300 transform hover:scale-105">
-                <span className="font-medium">Start Your Free Trial</span>
+              <button className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-4 rounded-full flex items-center space-x-2 transition-all duration-300 transform hover:scale-105 font-medium">
+                <span>Apply for Free Pilot</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
 
@@ -200,20 +178,19 @@ const AboutPage = () => {
                 <div className="flex p-3 items-center bg-blue-600 text-white rounded-full">
                   <Play className="w-5 h-5 fill-white" />
                 </div>
-                <span className="font-medium">Watch Our Story</span>
+                <span className="font-medium">Watch Demo</span>
               </button>
             </div>
           </div>
 
           {/* Stats Section */}
-          <div className="hidden grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={index}
-                  className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center hover:bg-blue-50/80 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center hover:bg-blue-50/80 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
                 >
                   <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-6 h-6 text-blue-600" />
@@ -225,21 +202,32 @@ const AboutPage = () => {
             })}
           </div>
 
+          {/* Problem Statement */}
+          <div className="bg-red-50/80 backdrop-blur-sm border border-red-200/50 rounded-2xl p-8 md:p-12 mb-16 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              🔒 Reimagining Exams for Low-Connectivity Regions
+            </h2>
+            <p className="text-gray-700 text-lg leading-relaxed max-w-4xl mx-auto">
+              In many parts of Africa and the Global South, unstable internet access makes digital exams unreliable. 
+              Schools are forced to rely on outdated paper systems or expensive imported tech that breaks under pressure.
+            </p>
+          </div>
+
           {/* Navigation Tabs */}
           <div className="flex flex-wrap justify-center mb-12">
             <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-full p-2 flex flex-wrap gap-1">
               {[
-                { id: "mission", label: "Our Mission" },
-                { id: "values", label: "Our Values" },
-                { id: "journey", label: "Our Journey" },
-                { id: "team", label: "Our Team" }
+                { id: "features", label: "Features" },
+                { id: "how-it-works", label: "How It Works" },
+             
+                { id: "use-cases", label: "Who It&apos;s For" }
               ].map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${
                     activeTab === tab.id
-                      ? "bg-gradient-to-r from-blue-400 to-blue-600 text-white"
+                      ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white"
                       : "text-gray-600 hover:text-blue-600 hover:bg-blue-50/50"
                   }`}
                 >
@@ -250,48 +238,22 @@ const AboutPage = () => {
           </div>
 
           {/* Content Sections */}
-          <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-8 md:p-12 mb-16 animate-slide-up">
-            {activeTab === "mission" && (
-              <div className="text-center max-w-4xl mx-auto animate-fade-in">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Empowering Education Through Innovation
-                </h2>
-                <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                  Our mission is to democratize access to secure, reliable examination systems. 
-                  We believe that every educator, regardless of their location or resources, 
-                  should have access to world-class assessment tools that work both online and offline.
-                </p>
-                <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                  We're not just building software – we're creating a future where examinations 
-                  are fair, accessible, and secure for everyone. From individual teachers to 
-                  large institutions, our platform adapts to your needs while maintaining 
-                  the highest standards of security and reliability.
-                </p>
-                <div className="flex justify-center">
-                  <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full"></div>
-                </div>
-              </div>
-            )}
-
-            {activeTab === "values" && (
-              <div className="animate-fade-in">
+          <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-8 md:p-12 mb-16">
+            {activeTab === "features" && (
+              <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
-                  What Drives Us Forward
+                  ✨ What Makes LearningDeck Different?
                 </h2>
                 <div className="grid md:grid-cols-2 gap-8">
-                  {values.map((value, index) => {
-                    const Icon = value.icon;
+                  {features.map((feature, index) => {
+                    const Icon = feature.icon;
                     return (
-                      <div
-                        key={index}
-                        className="group hover:bg-blue-50/50 rounded-2xl p-6 transition-all duration-300 transform hover:scale-105"
-                        style={{ animationDelay: `${index * 0.1}s` }}
-                      >
+                      <div key={index} className="group hover:bg-blue-50/50 rounded-2xl p-6 transition-all duration-300 transform hover:scale-105">
                         <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-200 transition-colors duration-300">
                           <Icon className="w-8 h-8 text-blue-600" />
                         </div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-4">{value.title}</h3>
-                        <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                        <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
+                        <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                       </div>
                     );
                   })}
@@ -299,51 +261,39 @@ const AboutPage = () => {
               </div>
             )}
 
-            {activeTab === "journey" && (
-              <div className="animate-fade-in">
+            {activeTab === "how-it-works" && (
+              <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
-                  Our Growth Story
+                  🛠️ How It Works
                 </h2>
-                <div className="space-y-8">
-                  {timeline.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex flex-col md:flex-row items-start gap-6 group hover:bg-blue-50/30 rounded-2xl p-6 transition-all duration-300"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      <div className="flex-shrink-0">
-                        <div className="w-20 h-20 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300">
-                          {item.year}
-                        </div>
+                <div className="space-y-6">
+                  {steps.map((step, index) => (
+                    <div key={index} className="flex items-center gap-6 group hover:bg-blue-50/30 rounded-2xl p-6 transition-all duration-300">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300">
+                        {index + 1}
                       </div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
-                        <p className="text-gray-600 leading-relaxed">{item.description}</p>
-                      </div>
+                      <p className="text-lg text-gray-700 font-medium">{step}</p>
                     </div>
                   ))}
+                </div>
+                <div className="mt-8 p-6 bg-blue-50/50 rounded-xl border border-blue-200/50">
+                  <p className="text-center text-gray-700 font-medium">
+                    💡 Think of it like <strong>Google Forms + LAN + Proctoring</strong> — in one box, without the cloud.
+                  </p>
                 </div>
               </div>
             )}
 
-            {activeTab === "team" && (
-              <div className="animate-fade-in">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
-                  Meet Our Leadership Team
+            {activeTab === "use-cases" && (
+              <div className="text-center">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
+                  🎓 Who It&apos;s For
                 </h2>
-                <div className="grid md:grid-cols-2 gap-8">
-                  {team.map((member, index) => (
-                    <div
-                      key={index}
-                      className="group bg-gradient-to-br from-blue-50/50 to-indigo-50/50 rounded-2xl p-6 hover:bg-gradient-to-br hover:from-blue-100/50 hover:to-indigo-100/50 transition-all duration-300 transform hover:scale-105"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full flex items-center justify-center mb-6 text-white font-bold text-xl group-hover:scale-110 transition-transform duration-300">
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
-                      <p className="text-blue-600 font-medium mb-4">{member.role}</p>
-                      <p className="text-gray-600 leading-relaxed">{member.description}</p>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                  {useCases.map((useCase, index) => (
+                    <div key={index} className="bg-gradient-to-br from-blue-50/50 to-indigo-50/50 rounded-2xl p-6 hover:from-blue-100/50 hover:to-indigo-100/50 transition-all duration-300 transform hover:scale-105">
+                      <CheckCircle className="w-8 h-8 text-blue-500 mx-auto mb-4" />
+                      <p className="font-medium text-gray-800">{useCase}</p>
                     </div>
                   ))}
                 </div>
@@ -351,50 +301,54 @@ const AboutPage = () => {
             )}
           </div>
 
-          {/* Call to Action Section */}
-          <div className="bg-gradient-to-r from-blue-400/20 to-indigo-400/20 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-8 md:p-12 text-center animate-fade-in">
+          {/* Mission Statement */}
+          <div className="bg-gradient-to-r from-blue-100/50 to-indigo-100/50 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-8 md:p-12 text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Ready to Transform Your Examinations?
+              🚀 Our Mission
+            </h2>
+            <p className="text-xl text-gray-700 mb-6 font-medium max-w-3xl mx-auto">
+              &quot;We build offline-first tools that empower education in places where the cloud doesn&apos;t reach.&quot;
+            </p>
+            <p className="text-gray-600 text-lg max-w-4xl mx-auto leading-relaxed">
+              At LearningDeck, we&apos;re solving a uniquely African challenge with purpose-built local infrastructure. 
+              We&apos;re not trying to bring Silicon Valley&apos;s internet obsession into schools — we&apos;re replacing it with 
+              <strong> reliable, context-aware, exam tech.</strong>
+            </p>
+          </div>
+
+          {/* Final CTA */}
+          <div className="hidden bg-gradient-to-r from-blue-500/20 to-indigo-500/20 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-8 md:p-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              🤝 Join the Movement
             </h2>
             <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
-              Join thousands of educators and institutions who trust our platform 
-              for their most critical assessments.
+              Let&apos;s make digital exams reliable, secure, and accessible — <strong>anywhere</strong>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white px-8 py-4 rounded-full flex items-center space-x-2 font-medium transition-all duration-300 transform hover:scale-105">
-                <span>Get Started Today</span>
+              <button className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-4 rounded-full flex items-center space-x-2 font-medium transition-all duration-300 transform hover:scale-105">
+                <span>Apply for Pilot Access</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
               <button className="bg-white/80 backdrop-blur-sm border border-gray-200/50 text-gray-800 px-8 py-4 rounded-full font-medium hover:bg-gray-100/80 transition-all duration-300 transform hover:scale-105">
-                Schedule a Demo
+                Request a Demo
               </button>
+            </div>
+            
+            <div className="mt-8 pt-8 border-t border-gray-200/50">
+              <p className="text-gray-600 mb-2">📍 Based in Lagos, Nigeria</p>
+              <p className="text-gray-600">
+                <strong>Instagram / Twitter:</strong> @learningdeckhq • 
+                <strong> Email:</strong> info@learningdeck.com
+              </p>
+              <p className="text-blue-600 font-medium mt-2 italic">
+                LearningDeck is proudly offline-first. Made for Africa.
+              </p>
             </div>
           </div>
         </div>
       </main>
-
-      {/* Custom Styles */}
-      <style jsx>{`
-        @keyframes fade-in {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes slide-up {
-          from { opacity: 0; transform: translateY(40px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate-fade-in {
-          animation: fade-in 0.6s ease-out;
-        }
-        
-        .animate-slide-up {
-          animation: slide-up 0.8s ease-out;
-        }
-      `}</style>
     </div>
   );
 };
 
-export default AboutPage;
+export default LearningDeckPage;
